@@ -1,0 +1,42 @@
+Options -Indexes
+
+# Sécurité PHP
+php_flag display_errors Off
+php_flag log_errors On
+php_value error_log /home/logs/php_errors.log
+
+# Headers de sécurité
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Protéger les dossiers sensibles
+<FilesMatch "\.(sql|log|env|json|md|yml|yaml|lock)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Empêcher l'exécution PHP dans uploads
+<FilesMatch "\.php$">
+    <If "%{REQUEST_URI} =~ m|/uploads/|">
+        Order allow,deny
+        Deny from all
+    </If>
+</FilesMatch>
+
+# Compression
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css application/javascript
+</IfModule>
+
+# Cache statique
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+</IfModule>

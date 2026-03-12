@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppMana</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="page-home">
+
+    <!-- NAVBAR TOP -->
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="index.html">AppMana</a>
+        </div>
+        <ul class="navbar-menu">
+            <li><a href="pages/cours.html">Cours</a></li>
+            <li><a href="pages/questions.html">Questions</a></li>
+            <li><a href="pages/quizz.html">Quizz</a></li>
+        </ul>
+        <div class="navbar-account">
+            <img src="assets/images/avatar.png" alt="Avatar" class="nav-avatar">
+            <span>Jean Dupont</span>
+        </div>
+    </nav>
+
+    <!-- PAGE ACCUEIL : HERO SEARCH -->
+    <div class="hero">
+        <h1 class="hero-title">Bonjour, Jean &#128075;</h1>
+        <p class="hero-subtitle">Posez une question, cherchez un cours ou lancez un quizz.</p>
+
+        <div class="hero-search">
+            <textarea id="heroInput" placeholder="Posez votre question ici..." rows="1"></textarea>
+            <button id="heroBtn" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </div>
+
+        <!-- SUGGESTIONS RAPIDES -->
+        <div class="hero-suggestions">
+            <button class="chip" onclick="fillSearch(this)">Comment fonctionne HTML ?</button>
+            <button class="chip" onclick="fillSearch(this)">Lancer un quizz CSS</button>
+            <button class="chip" onclick="fillSearch(this)">Cours JavaScript débutant</button>
+            <button class="chip" onclick="fillSearch(this)">Les bases de PHP</button>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

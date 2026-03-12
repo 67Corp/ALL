@@ -1,0 +1,21 @@
+# Configuration (credentials)
+config/config.php
+
+# Uploads utilisateurs
+uploads/avatars/*
+!uploads/avatars/.gitkeep
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Setup (à supprimer après installation)
+setup.php

@@ -1,0 +1,348 @@
+/* ========================
+   RESET & BASE
+======================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ========================
+   NAVBAR
+======================== */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #1a1a2e;
+    padding: 0 24px;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.navbar-brand a {
+    color: #e94560;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+}
+
+.navbar-menu li a {
+    color: #ccc;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.navbar-menu li a:hover,
+.navbar-menu li a.active {
+    background-color: #e94560;
+    color: #fff;
+}
+
+.navbar-search {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.navbar-search input {
+    padding: 7px 14px;
+    border: none;
+    border-radius: 20px;
+    background-color: #2a2a4a;
+    color: #fff;
+    width: 220px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: width 0.3s;
+}
+
+.navbar-search input::placeholder {
+    color: #888;
+}
+
+.navbar-search input:focus {
+    width: 280px;
+    background-color: #3a3a5a;
+}
+
+.navbar-search button {
+    background: #e94560;
+    border: none;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #fff;
+    transition: background 0.2s;
+}
+
+.navbar-search button:hover {
+    background: #c73652;
+}
+
+/* ========================
+   LAYOUT
+======================== */
+.layout {
+    display: flex;
+    min-height: calc(100vh - 60px);
+}
+
+/* ========================
+   SIDEBAR
+======================== */
+.sidebar {
+    width: 240px;
+    min-width: 240px;
+    background-color: #fff;
+    padding: 28px 16px;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #e94560;
+    margin-bottom: 12px;
+}
+
+.sidebar-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.sidebar-name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #1a1a2e;
+}
+
+.sidebar-role {
+    font-size: 0.82rem;
+    color: #888;
+    margin-top: 4px;
+    margin-bottom: 16px;
+}
+
+.sidebar hr {
+    width: 100%;
+    border: none;
+    border-top: 1px solid #eee;
+    margin-bottom: 16px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    width: 100%;
+}
+
+.sidebar-menu li {
+    margin-bottom: 4px;
+}
+
+.sidebar-menu li a {
+    display: block;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    color: #444;
+    transition: background 0.2s, color 0.2s;
+}
+
+.sidebar-menu li a:hover {
+    background-color: #f0f2f5;
+    color: #1a1a2e;
+}
+
+.sidebar-menu li a.logout {
+    color: #e94560;
+    margin-top: 16px;
+}
+
+.sidebar-menu li a.logout:hover {
+    background-color: #fde8ec;
+}
+
+/* ========================
+   CONTENU PRINCIPAL
+======================== */
+.content {
+    flex: 1;
+    padding: 36px 40px;
+}
+
+.content h1 {
+    font-size: 1.6rem;
+    color: #1a1a2e;
+    margin-bottom: 10px;
+}
+
+.content p {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* ========================
+   NAVBAR ACCOUNT (accueil)
+======================== */
+.navbar-account {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+.nav-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e94560;
+}
+
+/* ========================
+   PAGE ACCUEIL - HERO
+======================== */
+.page-home {
+    background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 60%, #16213e 100%);
+    min-height: 100vh;
+}
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 60px);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: #8888aa;
+    margin-bottom: 40px;
+}
+
+.hero-search {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    background-color: #1e1e3a;
+    border: 1px solid #3a3a5a;
+    border-radius: 16px;
+    padding: 14px 16px;
+    width: 100%;
+    max-width: 680px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.hero-search:focus-within {
+    border-color: #e94560;
+    box-shadow: 0 8px 40px rgba(233, 69, 96, 0.2);
+}
+
+.hero-search textarea {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: none;
+    max-height: 160px;
+    line-height: 1.5;
+}
+
+.hero-search textarea::placeholder {
+    color: #55556a;
+}
+
+.hero-search button {
+    background: #e94560;
+    border: none;
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    cursor: pointer;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.hero-search button:hover {
+    background: #c73652;
+    transform: scale(1.05);
+}
+
+/* SUGGESTIONS */
+.hero-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 24px;
+    max-width: 680px;
+}
+
+.chip {
+    background: transparent;
+    border: 1px solid #3a3a5a;
+    color: #8888aa;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+    font-family: inherit;
+}
+
+.chip:hover {
+    border-color: #e94560;
+    color: #e94560;
+    background: rgba(233, 69, 96, 0.06);
+}

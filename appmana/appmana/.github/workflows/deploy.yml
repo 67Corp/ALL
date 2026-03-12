@@ -1,0 +1,56 @@
+name: Deploy to Infomaniak
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Générer config.php depuis les secrets
+        run: |
+          mkdir -p config
+          cat > config/config.php << 'PHPEOF'
+          <?php
+          define('DB_HOST',   '${{ secrets.DB_HOST }}');
+          define('DB_NAME',   '${{ secrets.DB_NAME }}');
+          define('DB_USER',   '${{ secrets.DB_USER }}');
+          define('DB_PASS',   '${{ secrets.DB_PASS }}');
+          define('DB_CHARSET', 'utf8mb4');
+          define('GEMINI_API_KEY', '${{ secrets.GEMINI_API_KEY }}');
+          define('GEMINI_MODEL',   'gemini-pro');
+          define('GEMINI_API_URL', 'https://generativelanguage.googleapis.com/v1beta/models/' . GEMINI_MODEL . ':generateContent');
+          define('APP_NAME', 'AppMana');
+          define('APP_URL',  '${{ secrets.APP_URL }}');
+          define('APP_ENV',  'production');
+          define('SESSION_NAME',     'appmana_sess');
+          define('SESSION_LIFETIME', 3600);
+          define('UPLOAD_DIR',      __DIR__ . '/../uploads/avatars/');
+          define('UPLOAD_MAX_SIZE', 5 * 1024 * 1024);
+          define('GEMINI_HOURLY_LIMIT', 20);
+          define('URL_CACHE_DAYS', 7);
+          PHPEOF
+
+      - name: Créer le placeholder uploads
+        run: touch uploads/avatars/.gitkeep
+
+      - name: Déployer via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server:     ${{ secrets.FTP_SERVER }}
+          username:   ${{ secrets.FTP_USERNAME }}
+          password:   ${{ secrets.FTP_PASSWORD }}
+          local-dir:  ./
+          server-dir: ${{ secrets.FTP_REMOTE_DIR }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            *.md
+            uploads/avatars/**
+            !uploads/avatars/.gitkeep
