@@ -1,1 +1,1 @@
-# Bonjour, dépêchez-vous de bosser sur le projet
+# Bonjour, comment se passe le casino en ligne et les combinés ?
