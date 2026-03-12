@@ -1,0 +1,65 @@
+name: 🚀 Déploiement Infomaniak
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environnement cible'
+        required: true
+        default: 'production'
+        type: choice
+        options:
+          - production
+          - staging
+      message:
+        description: 'Note de déploiement (optionnel)'
+        required: false
+        default: ''
+
+jobs:
+  deploy:
+    name: Déployer sur Infomaniak
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout du code
+        uses: actions/checkout@v4
+
+      - name: 📋 Infos déploiement
+        run: |
+          echo "Environnement : ${{ github.event.inputs.environment }}"
+          echo "Branche       : ${{ github.ref_name }}"
+          echo "Commit        : ${{ github.sha }}"
+          echo "Déclenché par : ${{ github.actor }}"
+
+      - name: 🔐 Configurer la clé SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.INFOMANIAK_SSH_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p ${{ secrets.INFOMANIAK_SSH_PORT }} \
+            ${{ secrets.INFOMANIAK_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: 📤 Déployer les fichiers via rsync
+        run: |
+          rsync -avz --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='.gitignore' \
+            --exclude='README.md' \
+            --exclude='config/config.php' \
+            --exclude='config/db.php' \
+            --exclude='*.sql' \
+            --exclude='.env*' \
+            --exclude='*.log' \
+            -e "ssh -p ${{ secrets.INFOMANIAK_SSH_PORT }} -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no" \
+            ./ \
+            ${{ secrets.INFOMANIAK_USER }}@${{ secrets.INFOMANIAK_HOST }}:${{ secrets.INFOMANIAK_PATH }}
+
+      - name: ✅ Résumé
+        if: success()
+        run: |
+          echo "### ✅ Déploiement réussi !" >> $GITHUB_STEP_SUMMARY
+          echo "| Commit | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| Branche | \`${{ github.ref_name }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| Déployé par | @${{ github.actor }} |" >> $GITHUB_STEP_SUMMARY
