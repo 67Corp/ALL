@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StudyAI — Gemini Research Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0f14;
+    --surface: #13161d;
+    --surface2: #1a1e28;
+    --border: #252a38;
+    --accent: #4fffb0;
+    --accent2: #7c6cff;
+    --accent3: #ff6c6c;
+    --text: #e8eaf0;
+    --muted: #5a6070;
+    --success: #4fffb0;
+    --warning: #ffb84f;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Lora', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Animated background grid */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(79,255,176,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79,255,176,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .app {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  /* Header */
+  header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .logo-mark {
+    width: 42px; height: 42px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #0d0f14;
+    flex-shrink: 0;
+  }
+  header h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    letter-spacing: -0.02em;
+  }
+  header h1 span { color: var(--accent); }
+  .status-dot {
+    margin-left: auto;
+    display: flex; align-items: center; gap: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  /* Step indicator */
+  .steps {
+    display: flex;
+    gap: 0;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 18px; left: 18px; right: 18px;
+    height: 1px;
+    background: var(--border);
+    z-index: 0;
+  }
+  .step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+  .step-num {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    transition: all 0.3s;
+  }
+  .step.active .step-num {
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: 0 0 12px rgba(79,255,176,0.3);
+  }
+  .step.done .step-num {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--bg);
+  }
+  .step-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .step.active .step-label { color: var(--accent); }
+
+  /* Cards */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    margin-bottom: 1.5rem;
+    transition: border-color 0.3s;
+  }
+  .card:hover { border-color: #2e3548; }
+  .card-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .card-title .icon {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* STEP 1 — Source */
+  .source-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .tab-btn {
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .tab-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(79,255,176,0.06);
+  }
+
+  .input-group { margin-bottom: 1rem; }
+  .input-group label {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  input[type="text"], textarea, select {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: vertical;
+  }
+  input[type="text"]:focus, textarea:focus, select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(79,255,176,0.08);
+  }
+  textarea { min-height: 100px; }
+
+  /* Prompt builder */
+  .prompt-presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .preset-chip {
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .preset-chip:hover {
+    border-color: var(--accent2);
+    color: var(--accent2);
+    background: rgba(124,108,255,0.08);
+  }
+
+  /* Boutons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+  }
+  .btn-primary:hover {
+    background: #6fffc0;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(79,255,176,0.25);
+  }
+  .btn-secondary {
+    background: var(--surface2);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-secondary:hover { border-color: var(--accent2); color: var(--accent2); }
+  .btn-danger {
+    background: rgba(255,108,108,0.1);
+    color: var(--accent3);
+    border: 1px solid rgba(255,108,108,0.2);
+  }
+  .btn-upload {
+    background: var(--accent2);
+    color: #fff;
+  }
+  .btn-upload:hover {
+    background: #9585ff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(124,108,255,0.3);
+  }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none !important; }
+
+  /* Loading */
+  .loading-bar {
+    width: 100%;
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 1rem 0;
+    display: none;
+  }
+  .loading-bar.active { display: block; }
+  .loading-bar::after {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 40%;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+    border-radius: 2px;
+    animation: slide 1.2s ease-in-out infinite;
+  }
+  @keyframes slide { 0%{transform:translateX(-100%)} 100%{transform:translateX(300%)} }
+
+  /* STEP 2 — Résultat Gemini */
+  #step2 { display: none; }
+
+  .gemini-result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.2rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+  .gemini-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    background: rgba(79,255,176,0.08);
+    border: 1px solid rgba(79,255,176,0.2);
+    padding: 0.35rem 0.8rem;
+    border-radius: 20px;
+  }
+
+  /* Sections sélectionnables */
+  .sections-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .section-item {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.2s;
+  }
+  .section-item.selected {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(79,255,176,0.08);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.9rem 1.1rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  .section-checkbox {
+    width: 20px; height: 20px;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+    background: transparent;
+  }
+  .section-item.selected .section-checkbox {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .section-item.selected .section-checkbox::after {
+    content: '✓';
+    color: var(--bg);
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+  .section-title-text {
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    flex: 1;
+  }
+  .section-content-preview {
+    padding: 0 1.1rem 1rem;
+    display: none;
+  }
+  .section-content-preview.show { display: block; }
+  .section-content-preview .fiche-content {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: #c0c8d8;
+    border-left: 2px solid var(--accent2);
+    padding-left: 1rem;
+  }
+  .fiche-content h1, .fiche-content h2 {
+    font-family: 'Syne', sans-serif;
+    color: var(--text);
+    margin: 0.8rem 0 0.4rem;
+  }
+  .fiche-content ul, .fiche-content ol { padding-left: 1.2rem; }
+  .fiche-content li { margin-bottom: 0.3rem; }
+  .fiche-content strong { color: var(--accent); font-style: normal; }
+  .fiche-content em { color: var(--accent2); }
+  .fiche-content code {
+    background: rgba(124,108,255,0.15);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85em;
+  }
+  .expand-btn {
+    margin-left: auto;
+    background: none; border: none;
+    color: var(--muted); cursor: pointer; font-size: 0.75rem;
+    padding: 0.2rem 0.4rem;
+    font-family: 'DM Mono', monospace;
+    transition: color 0.2s;
+  }
+  .expand-btn:hover { color: var(--accent); }
+
+  /* Editable area */
+  .edit-area {
+    background: var(--surface);
+    border: 1px dashed var(--border);
+    border-radius: 8px;
+    padding: 1rem;
+    min-height: 60px;
+    font-family: 'Lora', serif;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--text);
+    outline: none;
+    margin-top: 0.8rem;
+  }
+  .edit-area:focus { border-color: var(--accent2); }
+
+  /* STEP 3 — Upload */
+  #step3 { display: none; }
+
+  .upload-form .input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  @media(max-width:600px){ .upload-form .input-row { grid-template-columns: 1fr; } }
+
+  .tags-input {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.6rem 0.8rem;
+    min-height: 44px;
+    cursor: text;
+    transition: border-color 0.2s;
+  }
+  .tags-input:focus-within { border-color: var(--accent); }
+  .tag-chip {
+    background: rgba(124,108,255,0.15);
+    border: 1px solid rgba(124,108,255,0.3);
+    color: var(--accent2);
+    padding: 0.2rem 0.6rem;
+    border-radius: 14px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    display: flex; align-items: center; gap: 0.3rem;
+  }
+  .tag-chip button {
+    background: none; border: none; color: inherit; cursor: pointer;
+    font-size: 0.8rem; line-height: 1; padding: 0;
+  }
+  .tags-input input {
+    background: none; border: none; outline: none;
+    color: var(--text); font-family: 'DM Mono', monospace;
+    font-size: 0.78rem; min-width: 80px; flex: 1;
+    padding: 0;
+  }
+
+  /* Preview finale */
+  .final-preview {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  .final-preview::-webkit-scrollbar { width: 4px; }
+  .final-preview::-webkit-scrollbar-track { background: transparent; }
+  .final-preview::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+    z-index: 1000;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast.success {
+    background: rgba(79,255,176,0.1);
+    border: 1px solid rgba(79,255,176,0.3);
+    color: var(--accent);
+  }
+  .toast.error {
+    background: rgba(255,108,108,0.1);
+    border: 1px solid rgba(255,108,108,0.3);
+    color: var(--accent3);
+  }
+
+  /* Action row */
+  .action-row {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+
+  .select-all-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.6rem 0;
+    margin-bottom: 0.5rem;
+  }
+  .select-all-row span {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+  .selected-count {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    margin-left: auto;
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header>
+    <div class="logo-mark">AI</div>
+    <h1>Study<span>AI</span> — Research Hub</h1>
+    <div class="status-dot">
+      <div class="dot"></div>
+      Gemini Pro connecté
+    </div>
+  </header>
+
+  <!-- Steps -->
+  <div class="steps">
+    <div class="step active" id="s1">
+      <div class="step-num">01</div>
+      <div class="step-label">Source & Tâche</div>
+    </div>
+    <div class="step" id="s2">
+      <div class="step-num">02</div>
+      <div class="step-label">Sélection</div>
+    </div>
+    <div class="step" id="s3">
+      <div class="step-num">03</div>
+      <div class="step-label">Upload BDD</div>
+    </div>
+  </div>
+
+  <!-- ===== STEP 1 ===== -->
+  <div id="step1">
+
+    <div class="card">
+      <div class="card-title"><div class="icon"></div>Source du contenu</div>
+      <div class="source-tabs">
+        <button class="tab-btn active" onclick="switchTab('url')">🔗 URL / Page web</button>
+        <button class="tab-btn" onclick="switchTab('text')">📝 Coller du texte</button>
+      </div>
+
+      <div id="tab-url">
+        <div class="input-group">
+          <label>URL de la page à analyser</label>
+          <input type="text" id="url-input" placeholder="https://exemple.com/article..." />
+        </div>
+        <div class="input-group">
+          <label>Proxy de scraping (optionnel)</label>
+          <input type="text" id="proxy-input" placeholder="Laisser vide si ton backend PHP gère le scraping" />
+        </div>
+      </div>
+
+      <div id="tab-text" style="display:none">
+        <div class="input-group">
+          <label>Colle ton texte ici</label>
+          <textarea id="text-input" placeholder="Colle le contenu de la page ou n'importe quel texte à analyser..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="icon"></div>Tâche pour Gemini</div>
+
+      <div class="prompt-presets">
+        <button class="preset-chip" onclick="setPrompt('fiche')">📚 Fiche de cours</button>
+        <button class="preset-chip" onclick="setPrompt('resume')">✂️ Résumé court</button>
+        <button class="preset-chip" onclick="setPrompt('quiz')">🧠 Générer un quiz</button>
+        <button class="preset-chip" onclick="setPrompt('points')">🎯 Points clés</button>
+        <button class="preset-chip" onclick="setPrompt('definition')">📖 Définitions</button>
+        <button class="preset-chip" onclick="setPrompt('plan')">🗂️ Plan détaillé</button>
+      </div>
+
+      <div class="input-group">
+        <label>Instruction personnalisée</label>
+        <textarea id="prompt-input" placeholder="Ex : Génère une fiche de cours structurée en HTML avec des titres H2, des points clés en <ul>, et mets en gras les concepts importants..." style="min-height:80px;"></textarea>
+      </div>
+
+      <div class="input-group">
+        <label>Langue de la réponse</label>
+        <select id="lang-select">
+          <option value="fr">🇫🇷 Français</option>
+          <option value="en">🇬🇧 Anglais</option>
+          <option value="es">🇪🇸 Espagnol</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="loading-bar" id="loading1"></div>
+
+    <div class="action-row">
+      <button class="btn btn-primary" onclick="analyzeWithGemini()">
+        ✦ Analyser avec Gemini
+      </button>
+    </div>
+
+  </div>
+
+  <!-- ===== STEP 2 ===== -->
+  <div id="step2">
+
+    <div class="card">
+      <div class="gemini-result-header">
+        <div class="card-title" style="margin:0"><div class="icon"></div>Résultat Gemini — Sélectionne ce que tu veux garder</div>
+        <div class="gemini-badge">✦ Gemini Pro</div>
+      </div>
+
+      <div class="select-all-row">
+        <button class="btn btn-secondary" style="padding:0.4rem 0.9rem;font-size:0.75rem;" onclick="selectAll(true)">Tout sélectionner</button>
+        <button class="btn btn-secondary" style="padding:0.4rem 0.9rem;font-size:0.75rem;" onclick="selectAll(false)">Tout désélectionner</button>
+        <span class="selected-count" id="selected-count">0 section(s) sélectionnée(s)</span>
+      </div>
+
+      <div class="sections-container" id="sections-container">
+        <!-- sections injectées dynamiquement -->
+      </div>
+
+      <div class="action-row">
+        <button class="btn btn-secondary" onclick="goToStep(1)">← Retour</button>
+        <button class="btn btn-upload" onclick="goToStep3()">
+          Continuer → Préparer l'upload
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===== STEP 3 ===== -->
+  <div id="step3">
+    <div class="card">
+      <div class="card-title"><div class="icon"></div>Informations de la fiche</div>
+
+      <div class="upload-form">
+        <div class="input-row">
+          <div class="input-group">
+            <label>Titre de la fiche</label>
+            <input type="text" id="fiche-titre" placeholder="Ex : Cours sur la photosynthèse" />
+          </div>
+          <div class="input-group">
+            <label>Catégorie</label>
+            <select id="fiche-categorie">
+              <option value="">— Choisir —</option>
+              <option>Biologie</option>
+              <option>Mathématiques</option>
+              <option>Histoire</option>
+              <option>Informatique</option>
+              <option>Physique</option>
+              <option>Chimie</option>
+              <option>Langues</option>
+              <option>Autre</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label>Tags (appuyer sur Entrée pour ajouter)</label>
+          <div class="tags-input" id="tags-container" onclick="document.getElementById('tag-input').focus()">
+            <input type="text" id="tag-input" placeholder="ajouter un tag..." onkeydown="handleTag(event)" />
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label>Source URL (optionnel)</label>
+          <input type="text" id="source-url" placeholder="https://..." />
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="icon"></div>Aperçu final — Contenu sélectionné</div>
+      <div class="final-preview" id="final-preview"></div>
+    </div>
+
+    <div class="loading-bar" id="loading3"></div>
+
+    <div class="action-row">
+      <button class="btn btn-secondary" onclick="goToStep(2)">← Retour</button>
+      <button class="btn btn-primary" onclick="uploadToDatabase()">
+        ☁ Sauvegarder dans la BDD
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ===================================================
+// CONFIGURATION — à adapter
+// ===================================================
+const CONFIG = {
+  geminiApiKey: 'VOTRE_CLE_GEMINI_ICI',       // clé Google AI Studio
+  backendUrl: 'api/gemini.php',                 // ton backend PHP
+  uploadUrl: 'api/upload_fiche.php',            // endpoint upload
+  scraperUrl: 'api/scraper.php',                // scraper PHP côté serveur
+};
+
+// ===================================================
+// STATE
+// ===================================================
+let state = {
+  currentTab: 'url',
+  geminiResponse: '',
+  sections: [],
+  tags: [],
+};
+
+// ===================================================
+// TABS
+// ===================================================
+function switchTab(tab) {
+  state.currentTab = tab;
+  document.getElementById('tab-url').style.display = tab === 'url' ? 'block' : 'none';
+  document.getElementById('tab-text').style.display = tab === 'text' ? 'block' : 'none';
+  document.querySelectorAll('.tab-btn').forEach((b, i) => {
+    b.classList.toggle('active', (i === 0 && tab === 'url') || (i === 1 && tab === 'text'));
+  });
+}
+
+// ===================================================
+// PROMPTS PRÉSETS
+// ===================================================
+const PROMPTS = {
+  fiche: `Génère une fiche de cours complète et structurée en HTML. 
+Utilise des balises H2 pour les grandes sections, H3 pour les sous-sections, 
+<ul>/<li> pour les listes, <strong> pour les concepts clés, <em> pour les termes importants.
+Divise le contenu en sections clairement séparées par des commentaires HTML <!-- SECTION: Titre -->.
+Langue : {lang}.`,
+
+  resume: `Fais un résumé concis en HTML structuré avec :
+- Un paragraphe d'introduction
+- Les idées principales en liste <ul>
+- Une conclusion courte
+Divise par sections avec <!-- SECTION: Titre -->. Langue : {lang}.`,
+
+  quiz: `Génère un quiz HTML avec 5 à 10 questions QCM basées sur ce contenu.
+Format : <div class="question">, <p> pour la question, <ul> pour les choix, 
+marque la bonne réponse avec data-correct="true".
+Groupe par thème avec <!-- SECTION: Thème -->. Langue : {lang}.`,
+
+  points: `Extrais les points clés essentiels en HTML :
+- Section "Concepts fondamentaux" avec <ul>
+- Section "Faits importants" avec <ul>  
+- Section "À retenir" avec les 3 points les plus critiques
+Utilise <!-- SECTION: Titre --> pour séparer. Langue : {lang}.`,
+
+  definition: `Génère un glossaire HTML des termes importants :
+<dl><dt>terme</dt><dd>définition</dd></dl>
+Groupe par thème avec <!-- SECTION: Thème -->. Langue : {lang}.`,
+
+  plan: `Génère un plan détaillé en HTML avec hiérarchie I > A > 1.
+Utilise <ol> imbriqués et ajoute une brève description pour chaque point.
+Sépare les grandes parties avec <!-- SECTION: Partie -->. Langue : {lang}.`,
+};
+
+function setPrompt(key) {
+  const lang = document.getElementById('lang-select').value;
+  document.getElementById('prompt-input').value = PROMPTS[key].replace('{lang}', lang === 'fr' ? 'Français' : lang === 'en' ? 'English' : 'Español');
+}
+
+// ===================================================
+// MAIN — APPEL GEMINI
+// ===================================================
+async function analyzeWithGemini() {
+  const prompt = document.getElementById('prompt-input').value.trim();
+  const lang = document.getElementById('lang-select').value;
+  let content = '';
+
+  if (!prompt) { showToast('Ajoute une instruction pour Gemini !', 'error'); return; }
+
+  // Récupération du contenu
+  if (state.currentTab === 'url') {
+    const url = document.getElementById('url-input').value.trim();
+    if (!url) { showToast('Entre une URL !', 'error'); return; }
+
+    setLoading('loading1', true);
+    try {
+      // Appel au scraper PHP côté serveur
+      const r = await fetch(CONFIG.scraperUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url })
+      });
+      const d = await r.json();
+      if (!d.success) throw new Error(d.error);
+      content = d.text;
+      document.getElementById('source-url').value = url;
+    } catch (e) {
+      setLoading('loading1', false);
+      showToast('Erreur scraping : ' + e.message, 'error');
+      return;
+    }
+  } else {
+    content = document.getElementById('text-input').value.trim();
+    if (!content) { showToast('Colle du texte !', 'error'); return; }
+  }
+
+  // Appel Gemini via backend PHP (pour ne pas exposer la clé)
+  const fullPrompt = `${prompt}\n\nVoici le contenu à analyser :\n\n${content.substring(0, 15000)}`;
+
+  try {
+    const r = await fetch(CONFIG.backendUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt: fullPrompt })
+    });
+    const d = await r.json();
+    if (!d.success) throw new Error(d.error);
+
+    state.geminiResponse = d.html;
+    parseSections(d.html);
+    goToStep(2);
+  } catch (e) {
+    showToast('Erreur Gemini : ' + e.message, 'error');
+  } finally {
+    setLoading('loading1', false);
+  }
+}
+
+// ===================================================
+// PARSING EN SECTIONS
+// ===================================================
+function parseSections(html) {
+  const parts = html.split(/<!--\s*SECTION:\s*([^-]+?)\s*-->/i);
+  state.sections = [];
+
+  if (parts.length <= 1) {
+    // Pas de sections → tout en un bloc
+    state.sections = [{ title: 'Contenu complet', html: html, selected: true, expanded: true }];
+  } else {
+    for (let i = 1; i < parts.length; i += 2) {
+      state.sections.push({
+        title: parts[i].trim(),
+        html: (parts[i + 1] || '').trim(),
+        selected: true,
+        expanded: true,
+      });
+    }
+  }
+
+  renderSections();
+}
+
+function renderSections() {
+  const c = document.getElementById('sections-container');
+  c.innerHTML = '';
+  state.sections.forEach((s, i) => {
+    const div = document.createElement('div');
+    div.className = 'section-item' + (s.selected ? ' selected' : '');
+    div.innerHTML = `
+      <div class="section-header" onclick="toggleSection(${i})">
+        <div class="section-checkbox"></div>
+        <span class="section-title-text">${s.title}</span>
+        <button class="expand-btn" onclick="event.stopPropagation();toggleExpand(${i})" id="expand-btn-${i}">
+          ${s.expanded ? '▲ réduire' : '▼ voir'}
+        </button>
+      </div>
+      <div class="section-content-preview ${s.expanded ? 'show' : ''}" id="preview-${i}">
+        <div class="fiche-content" id="content-${i}" contenteditable="true">${s.html}</div>
+        <small style="display:block;margin-top:0.5rem;font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--muted);">✏️ Clique pour éditer directement</small>
+      </div>
+    `;
+    c.appendChild(div);
+  });
+  updateCount();
+}
+
+function toggleSection(i) {
+  state.sections[i].selected = !state.sections[i].selected;
+  const el = document.querySelectorAll('.section-item')[i];
+  el.classList.toggle('selected', state.sections[i].selected);
+  updateCount();
+}
+
+function toggleExpand(i) {
+  state.sections[i].expanded = !state.sections[i].expanded;
+  document.getElementById(`preview-${i}`).classList.toggle('show', state.sections[i].expanded);
+  document.getElementById(`expand-btn-${i}`).textContent = state.sections[i].expanded ? '▲ réduire' : '▼ voir';
+}
+
+function selectAll(val) {
+  state.sections.forEach((s, i) => {
+    s.selected = val;
+    document.querySelectorAll('.section-item')[i].classList.toggle('selected', val);
+  });
+  updateCount();
+}
+
+function updateCount() {
+  const n = state.sections.filter(s => s.selected).length;
+  document.getElementById('selected-count').textContent = `${n} section(s) sélectionnée(s)`;
+}
+
+// ===================================================
+// STEP 3
+// ===================================================
+function goToStep3() {
+  // Récupère le contenu édité
+  state.sections.forEach((s, i) => {
+    const el = document.getElementById(`content-${i}`);
+    if (el) s.html = el.innerHTML;
+  });
+
+  const selected = state.sections.filter(s => s.selected);
+  if (selected.length === 0) { showToast('Sélectionne au moins une section !', 'error'); return; }
+
+  const combined = selected.map(s => `<section><h2>${s.title}</h2>${s.html}</section>`).join('\n');
+  document.getElementById('final-preview').innerHTML = combined;
+
+  // Titre auto
+  if (!document.getElementById('fiche-titre').value) {
+    document.getElementById('fiche-titre').value = 'Fiche — ' + new Date().toLocaleDateString('fr-FR');
+  }
+
+  goToStep(3);
+}
+
+// ===================================================
+// TAGS
+// ===================================================
+function handleTag(e) {
+  if (e.key === 'Enter' || e.key === ',') {
+    e.preventDefault();
+    const val = e.target.value.trim().replace(',', '');
+    if (val && !state.tags.includes(val)) {
+      state.tags.push(val);
+      renderTags();
+    }
+    e.target.value = '';
+  }
+}
+
+function removeTag(tag) {
+  state.tags = state.tags.filter(t => t !== tag);
+  renderTags();
+}
+
+function renderTags() {
+  const c = document.getElementById('tags-container');
+  const input = document.getElementById('tag-input');
+  c.innerHTML = '';
+  state.tags.forEach(t => {
+    const chip = document.createElement('div');
+    chip.className = 'tag-chip';
+    chip.innerHTML = `${t} <button onclick="removeTag('${t}')">×</button>`;
+    c.appendChild(chip);
+  });
+  c.appendChild(input);
+}
+
+// ===================================================
+// UPLOAD BDD
+// ===================================================
+async function uploadToDatabase() {
+  const titre = document.getElementById('fiche-titre').value.trim();
+  const categorie = document.getElementById('fiche-categorie').value;
+  if (!titre) { showToast('Ajoute un titre !', 'error'); return; }
+
+  const selected = state.sections.filter(s => s.selected);
+  const contenu = selected.map(s => `<section><h2>${s.title}</h2>${s.html}</section>`).join('\n');
+
+  const payload = {
+    titre,
+    categorie,
+    tags: state.tags.join(','),
+    contenu,
+    source_url: document.getElementById('source-url').value,
+  };
+
+  setLoading('loading3', true);
+  try {
+    const r = await fetch(CONFIG.uploadUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    const d = await r.json();
+    if (!d.success) throw new Error(d.error);
+
+    showToast('✓ Fiche sauvegardée en BDD (ID: ' + d.id + ')', 'success');
+    setTimeout(() => resetApp(), 2500);
+  } catch (e) {
+    showToast('Erreur upload : ' + e.message, 'error');
+  } finally {
+    setLoading('loading3', false);
+  }
+}
+
+// ===================================================
+// NAVIGATION
+// ===================================================
+function goToStep(n) {
+  [1,2,3].forEach(i => {
+    document.getElementById('step' + i).style.display = i === n ? 'block' : 'none';
+    const s = document.getElementById('s' + i);
+    s.classList.remove('active', 'done');
+    if (i < n) s.classList.add('done');
+    if (i === n) s.classList.add('active');
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function resetApp() {
+  state = { currentTab: 'url', geminiResponse: '', sections: [], tags: [] };
+  document.getElementById('url-input').value = '';
+  document.getElementById('text-input').value = '';
+  document.getElementById('prompt-input').value = '';
+  document.getElementById('fiche-titre').value = '';
+  renderTags();
+  goToStep(1);
+}
+
+// ===================================================
+// UTILS
+// ===================================================
+function setLoading(id, active) {
+  document.getElementById(id).classList.toggle('active', active);
+}
+
+function showToast(msg, type = 'success') {
+  const t = document.getElementById('toast');
+  t.className = 'toast ' + type;
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+</script>
+</body>
+</html>
