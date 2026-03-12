@@ -1,0 +1,196 @@
+--- PROGRAMME ---
+
+Annexes (Articles Annexe I à Annexe III)
+
+    Annexe I
+
+    PROGRAMME DE " CULTURE ÉCONOMIQUE, JURIDIQUE ET MANAGÉRIALE "
+
+    L'enseignement de culture économique, juridique et managériale vise à permettre au titulaire du BTS de :
+
+    - disposer d'une culture économique, juridique et managériale nécessaire à la compréhension des enjeux et des défis auxquels doivent répondre les entreprises ;
+    - s'approprier le cadre économique, juridique et managérial de son activité professionnelle ;
+    - mobiliser les compétences économiques, juridiques et managériales nécessaires à la réalisation des objectifs et des activités de l'entreprise ;
+    - intégrer les dimensions économique, juridique et managériale des compétences professionnelles liées à la spécialité de BTS ;
+    - communiquer avec différentes parties prenantes de l'entreprise.
+
+    Les six thèmes proposés sont structurés par l'étude de questions clés, chacune étant associée de façon privilégiée à un champ disciplinaire donné, à des compétences ciblées. Cette présentation favorise la complémentarité des regards disciplinaires et la formulation de réponses aux questions auxquelles l'entreprise est confrontée en mobilisant les savoirs et méthodologies spécifiques à chaque discipline.
+    Cet enseignement prend appui sur des situations professionnelles contextualisées, rencontrées y compris dans de petites et moyennes entreprises, et sur des ressources documentaires de nature économique (tableaux statistiques, articles de nature économique…), juridique (contrats, textes législatifs ou réglementaires, décisions de justice, …) et managériale (études de situations concrètes d'entreprises, articles relatifs à des entreprises, …) Le programme de culture économique, juridique et managériale est conçu de manière à favoriser de nombreuses transversalités avec les enseignements professionnels.
+
+    THÈME 1 : L'INTÉGRATION DE L'ENTREPRISE DANS SON ENVIRONNEMENT
+    Pour décrire l'environnement d'une entreprise, il convient de repérer les acteurs avec lesquels elle est en relation. Ces relations de concurrence ou de coopération, marchandes ou non, peuvent être affectées par plusieurs paramètres (taille des entreprises, possibilités d'asymétrie d'information,...). Parmi les composantes environnementales, le prix fait l'objet d'une attention particulière, mais d'autres éléments relatifs à la dynamique du marché et à l'évolution des conditions de concurrence ou de coopération sont à prendre en compte. Le droit intervient pour fournir un cadre aux entreprises afin qu'elles puissent construire des relations équilibrées et sécurisées. La dimension managériale nécessite de s'intéresser aux finalités de l'entreprise et à son modèle économique, mais aussi de repérer les principales opportunités et menaces associées à l'environnement.
+    Le titulaire du diplôme est appelé à utiliser les ressources suivantes :
+    - une documentation, décrivant le contexte et la situation de l'entreprise ;
+    - une documentation décrivant les différents acteurs, leurs relations, le fonctionnement des marchés en lien avec l'activité de l'entreprise ;
+    - des contrats impliquant l'entreprise, la règlementation afférente.
+    Questions	Compétences	Savoirs associés
+    Comment s'établissent les relations entre l'entreprise et son environnement économique ?	- Identifier les principaux agents économiques en relation avec l'entreprise et leurs rôles (ménages, entreprises, banques, Etat)
+    - Présenter le fonctionnement des marchés sur lesquels intervient l'entreprise
+    - Repérer l'existence d'externalités pour l'entreprise	- Les agents économiques et leurs rôles
+    - Les échanges entre les agents économiques
+    - Le rôle du marché et son fonctionnement
+    - La concurrence et les relations de coopération
+    - Les barrières à l'entrée
+    - L'asymétrie de l'information
+    - Les externalités positives et négatives
+    - Le rôle des banques et du marché financier
+    Comment les contrats sécurisent-ils les relations entre l'entreprise et ses partenaires ?	- Qualifier une situation précontractuelle et repérer le processus de formation d'un contrat
+    - Analyser et évaluer les conditions de la validité, les clauses et les effets juridiques d'un contrat	- Les principes contractuels et leur évolution
+    - La formation du contrat
+    - Le contenu du contrat
+    De quelle manière l'entreprise s'inscrit-elle dans son environnement ?	- Identifier les finalités économique, sociale et sociétale de l'entreprise
+    - Caractériser les différentes parties prenantes de l'entreprise
+    - Caractériser les étapes de création d'une entreprise
+    - Distinguer une démarche entrepreneuriale d'une démarche managériale
+    - Identifier les différentes composantes de la performance de l'entreprise	- Les finalités de l'entreprise
+    - Les parties prenantes
+    - Logique entrepreneuriale
+    - Logique managériale
+    - Les indicateurs de performance
+
+    THÈME 2 : LA RÉGULATION DE L'ACTIVITÉ ÉCONOMIQUE
+    Le fonctionnement de l'économie nécessite une intervention plus ou moins forte de l'Etat pour fluidifier le marché, corriger des dysfonctionnements et influencer le niveau de l'activité économique. L'Etat et ses institutions régulent l'activité des agents, notamment par la production de règles de droit général et de droits spécifiques (par exemple, celles édictées par le droit de la concurrence ou de la propriété industrielle). Enfin, l'action publique, à court et à moyen terme, affecte l'organisation et la politique de l'offre de l'entreprise par des incitations mais aussi des contraintes (normes). Le management doit prendre la mesure du rôle de l'Etat à travers l'analyse économique et juridique de son environnement.
+    Le titulaire du diplôme est appelé à utiliser les ressources suivantes :
+    - une documentation décrivant le contexte et la situation de l'entreprise ;
+    - une documentation décrivant l'environnement économique de l'entreprise, des mesures de politiques économiques et leurs effets (extraits de notes de conjoncture, …) ;
+    - des situations juridiques auxquelles l'entreprise est confrontée, la règlementation afférente.
+    Questions	Compétences	Savoirs associés
+    Quel est le rôle de l'Etat dans la régulation économique ?	- Identifier les principales politiques économiques et leurs outils
+    - Repérer l'impact des politiques sur l'environnement de l'entreprise	- Le rôle de l'Etat (allocation, redistribution, régulation)
+    - La croissance économique
+    - L'existence de déséquilibres : inflation, chômage
+    - Les politiques économiques et leurs finalités
+    - Les politiques conjoncturelles et politiques structurelles
+    - Les limites de l'intervention de l'Etat dans un contexte d'internationalisation de l'économie
+    - Les principes de la régulation supranationale dans le cadre européen
+    Comment les activités économiques sont-elles régulées par le droit ?	- Repérer les enjeux du droit de la concurrence et du droit de la propriété industrielle pour l'entreprise	- Le rôle du droit dans la régulation
+    - Le rôle des autorités administratives indépendantes
+    - Le droit de la concurrence
+    - Le droit de la propriété industrielle : brevet et marque
+    Comment l'entreprise intègre-t-elle la connaissance de son environnement dans sa prise de décision ?	- Repérer les principaux éléments du macro environnement de l'entreprise
+    - Analyser les évolutions de l'environnement et en identifier les conséquences sur la situation de l'entreprise	- Les caractéristiques de l'environnement : facteurs politiques, légaux, économiques, socioculturels, technologiques et environnementaux
+    - Le rôle de l'innovation
+
+    THÈME 3 : L'ORGANISATION DE L'ACTIVITÉ DE L'ENTREPRISE
+    Pour assurer sa production et offrir des produits adaptés aux besoins des clients, l'entreprise doit organiser ses activités. En particulier, elle est confrontée au choix entre " faire " et " faire faire ". Les autres choix en matière de financement de l'activité, d'exercice de sa responsabilité éthique, sociale et environnementale, constituent également des révélateurs essentiels du fonctionnement de l'entreprise.
+    Enfin, organiser les ressources signifie que l'entreprise coordonne les actions de ses membres afin de réaliser un objectif commun. Il est important que l'encadrement de tout niveau prenne conscience que gérer une entreprise implique de prendre des décisions résultant de choix sous contraintes qui relèvent de différents champs :
+    Enfin, organiser les ressources signifie que l'entreprise coordonne les actions de ses membres afin de réaliser un objectif commun. Il est important que l'encadrement de tout niveau prenne conscience que gérer une entreprise implique de prendre des décisions résultant de choix sous contraintes qui relèvent de différents champs :
+    - économique avec le choix d'activités productives dépendant d'une analyse de la valeur ;
+    - juridique avec le choix d'une structure adaptée à un contexte/une situation et la gestion des risques inhérents à l'activité ;
+    - managérial avec la mise en place de mécanismes de coordination et de contrôle et d'un style de management.
+    Le titulaire du diplôme est appelé à utiliser les ressources suivantes :
+    - une documentation décrivant le contexte et la situation de l'entreprise ;
+    - une documentation décrivant la structure de coûts de l'entreprise et présentant les décisions de l'entreprise ;
+    - des situations juridiques présentant les besoins et les finalités de l'entreprise ;
+    - des situations où l'entreprise s'expose à des risques.
+    Questions	Compétences	Savoirs associés
+    Comment les facteurs économiques déterminent-ils les choix de production ?	- Caractériser la structure de coût de l'entreprise
+    - Analyser l'influence de paramètres économiques (taux d'intérêt, coût des facteurs…) sur les décisions de l'entreprise
+    - Argumenter le choix de l'entreprise entre " faire " ou " faire-faire "	- Les facteurs de production (capital, travail, matières premières, connaissances)
+    - Les gains de productivité et coûts de production
+    - La chaîne de valeur
+    - Les principes et finalités de l'impartition
+    Comment choisir une structure juridique pour l'entreprise ?	- Justifier le choix d'une structure juridique d'entreprise adaptée à une situation donnée	- Les facteurs de choix d'une structure juridique
+    - L'entreprise individuelle et les structures sociétaires (SA, SAS, EURL/SARL)
+    - Les formes juridiques de l'économie sociale et solidaire (coopératives, mutuelles)
+    Quelles réponses apporte le droit face aux risques auxquels s'expose l'entreprise ?	- Caractériser le risque d'une situation donnée
+    - Identifier la nature juridique de la responsabilité d'une entreprise dans une situation donnée
+    - Analyser une situation juridique d'entreprise mettant en œuvre la responsabilité civile contractuelle ou extracontractuelle	- Les types de risques
+    - L'inexécution du contrat
+    - Responsabilité civile et pénale
+    - Les principes de la responsabilité civile contractuelle et extracontractuelle
+    Comment l'entreprise organise-t-elle ses ressources ?	- Caractériser les styles de management
+    - Repérer le rôle des différentes parties prenantes et des contre-pouvoirs
+    - Identifier le type de structure, les mécanismes de coordination et de contrôle au sein de l'entreprise
+    - Repérer les ressources et les compétences au sein de l'entreprise
+    - Distinguer les différents processus de l'entreprise	- Les ressources tangibles et intangibles
+    - Les compétences
+    - Les mécanismes de coordination et de contrôle
+    - Les styles de management
+    - Les différents niveaux de management
+    - Les processus de l'entreprise
+    - La responsabilité éthique, sociale, sociétale et environnementale
+    - Les effets d'expérience
+    Quel financement pour l'entreprise ?	- Identifier le besoin de financement de l'entreprise en fonction du cycle (exploitation /investissement)
+    - Recenser les solutions de financement adaptées à l'entreprise dans une situation donnée	- La distinction cycle d'exploitation, cycle d'investissement
+    - Le compte de résultat de l'entreprise
+    - Le bilan de l'entreprise
+    - Les différents modes de financement
+    - L'équilibre financier de l'entreprise
+
+    THÈME 4 : L'IMPACT DU NUMÉRIQUE SUR LA VIE DE L'ENTREPRISE
+    Le numérique, issu de la convergence des sciences et technologies de l'information et de la communication, affecte la vie et le fonctionnement de l'entreprise de différentes manières :
+    Le numérique, issu de la convergence des sciences et technologies de l'information et de la communication, affecte la vie et le fonctionnement de l'entreprise de différentes manières :
+    - en facilitant l'accès des agents à l'information par la mise en place de réseaux d'agents économiques ou de modèles spécifiques de fixation des prix ;
+    - en confrontant l'entreprise à des situations juridiques nouvelles et spécifiques liées au principe de la preuve, de la protection des données ou encore au suivi de l'identité numérique ;
+    - en modifiant les modalités de coordination entre les différents acteurs, de partage de l'information, d'organisation des processus de l'entreprise en installant des possibilités d'organisations collaboratives.
+    Autant d'éléments qui influencent directement le mode de management.
+    Le titulaire du diplôme est appelé à utiliser les ressources suivantes :
+    - une documentation décrivant le contexte numérique et la situation de l'entreprise ;
+    - une documentation relative à l'environnement de l'entreprise et aux relations entretenues avec différents agents ;
+    - des situations juridiques auxquelles l'entreprise est confrontée et la règlementation afférente ;
+    - des situations organisationnelles présentant les processus, les besoins et les finalités de l'entreprise.
+    Questions	Compétences	Savoirs associés
+    Comment le numérique transforme-t-il l'environnement des entreprises ?	- Identifier les conséquences du numérique sur les modes de production et de consommation de biens et services de l'entreprise
+    - Analyser les conséquences du numérique dans les relations d'échange de l'entreprise	- La place de marché
+    - Les relations d'échange : B to B, B to C, C to C, B to G
+    - Les externalités de réseau
+    - L'évolution des modèles économiques : relations marchandes, non marchandes, économie collaborative, propriété et usages
+    Les normes et les standards
+    .
+    Dans quelle mesure le droit répond-il aux questions posées par le développement du numérique ?	- Identifier pour l'entreprise les modalités juridiques de protection des actifs immatériels
+    - Caractériser les conséquences juridiques des choix opérés par l'entreprise sur la protection des personnes, des données
+    - Qualifier et analyser les clauses de contrats relatives à une vente ou à une prestation de service numérique	- Le rôle de la CNIL
+    - La protection des actifs immatériels : droit d'auteurs et droits d'utilisation des services et des applications
+    - La protection de la personne : les données à caractère personnel, l'identité numérique, l'usage du numérique dans l'activité de travail
+    - La preuve électronique
+    - Le contrat de vente électronique
+    - Le contrat de prestations de service numérique
+    Quelle est l'incidence du numérique sur le management ?	- Repérer le rôle du système d'information dans le fonctionnement de l'entreprise
+    - Identifier les conséquences du déploiement du numérique sur le management et les processus décisionnels de l'entreprise	- Spécialisation, intégration, action collective
+    - Mode de coordination, flexibilité, modalités d'organisation du travail
+    - Composantes et rôles du système d'information, opportunités et risques liés au système d'information
+
+    THÈME 5 : LES MUTATIONS DU TRAVAIL
+    Prendre la mesure des mutations du travail nécessite de pouvoir appréhender la situation du marché du travail. Plusieurs facteurs affectent le marché du travail et le font évoluer : contenu des emplois, évolutions rapides des métiers, numérisation et automatisation du travail, évolution des dispositifs législatifs et réglementaires en matière de droit du travail. L'analyse globale et contingente du cadre législatif et conventionnel de l'entreprise, complétée par l'étude des relations de travail contractuelles, permet de comprendre le cadre juridique au sein duquel l'activité se réalise. Pour répondre aux évolutions qualitatives et quantitatives des besoins en personnel, les entreprises doivent porter une attention soutenue au recrutement et à la formation. Les attentes des entreprises sont fortes en termes de flexibilité et d'adaptation aux métiers, tant pour aujourd'hui que pour demain. Le management doit ici être en mesure de faire constamment évoluer l'organisation du travail en fonction " de ce qui est possible et de ce qui est permis ".
+    Le titulaire du diplôme est appelé à utiliser les ressources suivantes :
+    - une documentation décrivant le contexte de l'entreprise et la situation du marché du travail ;
+    - des situations juridiques auxquelles l'entreprise est confrontée, la règlementation afférente en matière de droit du travail ;
+    - des situations d'entreprise nécessitant une analyse en termes de gestion des compétences et des ressources humaines
+    Questions	Compétences	Savoirs associés
+    Quelles sont les principales évolutions du marché du travail ?	- Décrire les principales tendances du marché du travail
+    - Caractériser l'action des pouvoirs publics pour accompagner les transformations du marché du travail	- L'offre et la demande de travail
+    - La segmentation du marché du travail
+    - Les déséquilibres du marché du travail et la politique de l'emploi
+    Comment le droit prend-il en considération les besoins des entreprises et des salariés ?	- Analyser un contrat de travail et justifier les clauses de ce contrat au regard des besoins de l'entreprise et des salariés
+    - Caractériser les obligations de l'employeur en matière de protection des salariés
+    - Identifier les dispositifs de formation au sein de l'entreprise
+    - Identifier le rôle du droit négocié
+    - Identifier le rôle des partenaires sociaux dans l'entreprise
+    -Qualifier une modification ou une rupture du rapport d'emploi et en déduire les conséquences juridiques	- Les différentes sources du droit du travail
+    - Les régimes juridiques du salarié et du travailleur indépendant
+    - Les contrats de travail
+    - Les principes de la protection du salarié
+    - Les modifications du rapport d'emploi
+    - Les modes de rupture du rapport d'emploi
+    - Le droit négocié et le rôle des partenaires sociaux.
+    Quel est l'impact des mutations du travail sur l'emploi et les conditions de travail ?	- Proposer des actions appropriées dans le cadre d'une gestion des emplois et des compétences
+    - Identifier les leviers de motivation conciliant l'objectif de l'entreprise et les attentes de l'individu	- Le dispositif de gestion prévisionnelle des emplois et des compétences
+    - Les facteurs de la motivation et de la satisfaction au travail
+    - Les conditions de travail et leurs évolutions
+
+    THÈME 6 : LES CHOIX STRATÉGIQUES DE L'ENTREPRISE
+    Un environnement complexe et dynamique nécessite de la part des entreprises la mise en place d'une démarche d'analyse stratégique rigoureuse. La démarche de diagnostic interne et externe de l'entreprise constitue une étape préalable indispensable à toute décision et conditionne ses choix stratégiques. Les résultats du diagnostic, après l'étude des différentes alternatives, tant au niveau global qu'au niveau de chaque domaine d'activité, conduisent à la définition d'orientations stratégiques. Quelle que soit l'orientation stratégique choisie, l'entreprise doit trouver des voies de développement pertinentes. Pour cela, elle peut privilégier une croissance organique ou une croissance externe ou faire appel à des partenaires (croissance conjointe). Chaque scénario de développement implique que l'entreprise intervienne sur son environnement concurrentiel par des choix cohérents et réalistes.
+    Le titulaire du diplôme est appelé à utiliser les ressources suivantes :
+    - une base documentaire relative à la situation de l'entreprise permettant de présenter des éléments de son diagnostic interne et externe ;
+    - des informations sur la conduite, la gouvernance de l'entreprise ;
+    - une documentation caractérisant les choix stratégiques.
+    Questions	Compétences	Savoirs associés
+    Comment le diagnostic éclaire-t-il les choix stratégiques de l'entreprise ?	- Identifier les différentes étapes d'une démarche d'analyse stratégique
+    - Présenter les principaux éléments d'un diagnostic interne et/ou externe de l'entreprise	- Le diagnostic externe et l'analyse de l'environnement
+    - Le diagnostic interne et les ressources stratégiques de l'entreprise
+    Quels sont les choix stratégiques opérés par l'entreprise ?	- Présenter les étapes de la décision stratégiques
+    - Identifier et analyser les choix stratégiques de l'entreprise
+    - Analyser la pertinence de choix stratégiques de l'entreprise	- Les domaines d'activités stratégiques
+    - Les options stratégiques globales et par domaines d'activités
+    - Les modalités de croissance des entreprises
